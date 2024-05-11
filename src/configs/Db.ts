@@ -20,4 +20,4 @@ function client() {
   return mongoClient.database();
 }
 
-export const Db = { connect, client };
+export const db = { connect, client };
