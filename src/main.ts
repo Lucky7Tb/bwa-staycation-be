@@ -5,19 +5,12 @@ import {
   bodyLimit,
   secureHeaders,
 } from "https://deno.land/x/hono@v4.3.4/middleware.ts";
-import { db } from "./configs/Db.ts";
 import { env } from "./configs/Env.ts";
 import { route } from "./routes/Route.ts";
 import { logger } from "./configs/Logger.ts";
 import { Context } from "https://deno.land/x/hono@v4.3.4/mod.ts";
 
-export async function startApp() {
-  try {
-    await db.connect();
-  } catch (err) {
-    logger.error(`Cannot connect to database`, { ...err });
-  }
-
+export function startApp() {
   route.use(
     bodyLimit({
       maxSize: 50000 * 1024,

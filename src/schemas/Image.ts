@@ -1,3 +1,3 @@
-export interface Image {
+interface Image {
   imageUrl: string;
 }
