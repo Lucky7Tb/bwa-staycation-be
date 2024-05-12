@@ -1,6 +1,7 @@
+import { client } from "../configs/Db.ts";
 import { ObjectId } from "https://deno.land/x/mongo@v0.33.0/mod.ts";
 
-export interface Booking {
+interface Booking {
   bookingStartDate: Date;
   bookingEndDate: Date;
   invoice: string;
@@ -17,3 +18,5 @@ interface Payment {
   accountHolder: string;
   status: string;
 }
+
+export const BookingSchema = client.collection<Booking>("bookings");
